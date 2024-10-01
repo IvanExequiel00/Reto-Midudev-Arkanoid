@@ -59,14 +59,31 @@
         }
     
         function ballMovement() {
+            if(x + dx > canvas.width - ballRadius || x + dx < ballRadius){
+               dx = -dx 
+            }
+            if (y + dy < ballRadius ){
+                dy = -dy
+            }
+            if(y + dy > canvas.height - ballRadius)
+            {console.log("game over")
+                document.location.reload()
+            }
+            x += dx
+            y += dy
             
         }
     
         function paddleMovement() {
             // Función vacía
         }
-    
+        
+        function cleanCanvas(){
+            ctx.clearRect(0,0, canvas.width, canvas.height)
+        }
+
         function draw() {
+            cleanCanvas()
             //aca van los dibujos y los checks de colision
             drawBall()
             drawPaddle()
