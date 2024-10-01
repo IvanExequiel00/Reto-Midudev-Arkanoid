@@ -33,6 +33,12 @@
         //velocidad de la pelota
         let dx = 2
         let dy = -2
+
+       // variables de la paleta 
+       const paddleH = 10;
+       const paddleW = 50;
+       let paddleX = (canvas.width - paddleW) / 2
+       let paddleY = canvas.height - paddleH
     
         function drawBall() {
             ctx.beginPath()
@@ -43,7 +49,8 @@
         }
     
         function drawPaddle() {
-            // Función vacía
+            ctx.fillStyle = '#09f'
+            ctx.fillRect()
         }
     
         function drawBricks() {
