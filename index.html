@@ -24,17 +24,49 @@
         const ctx = canvas.getContext('2d') // 2d rendering context
         canvas.width = 448
         canvas.height = 400
-        function draw (){
+    
+        function drawBall() {
+            // Función vacía
+        }
+    
+        function drawPaddle() {
+            // Función vacía
+        }
+    
+        function drawBricks() {
+            // Función vacía
+        }
+    
+        function drawScore() {
+            // Función vacía
+        }
+    
+        function colisionDetection() {
+            // Función vacía
+        }
+    
+        function ballMovement() {
+            // Función vacía
+        }
+    
+        function paddleMovement() {
+            // Función vacía
+        }
+    
+        function draw() {
             //aca van los dibujos y los checks de colision
             drawBall()
             drawPaddle()
             drawBricks()
             //drawScore
-            
             //colosiones y moviminietos
+            colisionDetection()
+            ballMovement()
+            paddleMovement()
             window.requestAnimationFrame(draw)
         }
-        draw
+    
+        draw()
     </script>
 </head>
 <body>
