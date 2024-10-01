@@ -38,7 +38,10 @@
        const paddleH = 10;
        const paddleW = 50;
        let paddleX = (canvas.width - paddleW) / 2
-       let paddleY = canvas.height - paddleH
+       let paddleY = canvas.height - paddleH - 10
+
+       let righPress = false
+       let leftPress = false
     
         function drawBall() {
             ctx.beginPath()
@@ -49,8 +52,13 @@
         }
     
         function drawPaddle() {
-            ctx.fillStyle = '#09f'
-            ctx.fillRect()
+            ctx.fillStyle = 'red'
+            ctx.fillRect(
+                paddleX,
+                paddleY,
+                paddleW,
+                paddleH,
+            )
         }
     
         function drawBricks() {
@@ -89,6 +97,31 @@
             ctx.clearRect(0,0, canvas.width, canvas.height)
         }
 
+        function initEvent(){
+            document.addEventListener('keydown',keyDownHandler)
+            document.addEventListener('keyup',keyUpHandler)
+
+            function keyDownHandler (event) {
+                const {key} = event
+                if(key ===  'Right' || key === 'ArrowRight'){
+                    righPress = true
+                }else if(key === 'Left' || key === 'ArrowLeft'){
+                    leftPress = true
+                }
+            }
+
+
+            function keyUpHandler (event) {
+                const {key} = event
+                if(key ===  'Right' || key === 'ArrowRight'){
+                    righPress = false
+                }else if(key === 'Left' || key === 'ArrowLeft'){
+                    leftPress = false
+                }
+            }
+
+        }
+
         function draw() {
             cleanCanvas()
             //aca van los dibujos y los checks de colision
@@ -104,6 +137,7 @@
         }
     
         draw()
+        initEvent()
     </script>
 </head>
 <body>
