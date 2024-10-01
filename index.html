@@ -31,7 +31,7 @@
         let x = canvas.width / 2;
         let y = canvas.height - 30
         //velocidad de la pelota
-        let dx = 2
+        let dx = -3
         let dy = -2
 
        // variables de la paleta 
@@ -42,6 +42,8 @@
 
        let righPress = false
        let leftPress = false
+
+       const PADDLE_SENSIBILITY = 8
     
         function drawBall() {
             ctx.beginPath()
@@ -80,7 +82,11 @@
             if (y + dy < ballRadius ){
                 dy = -dy
             }
-            if(y + dy > canvas.height - ballRadius)
+            if (){
+                
+            }
+
+            else if(y + dy > canvas.height - ballRadius)
             {console.log("game over")
                 document.location.reload()
             }
@@ -90,7 +96,12 @@
         }
     
         function paddleMovement() {
-            // Función vacía
+            if(righPress && paddleX < canvas.width - paddleW){
+                paddleX += PADDLE_SENSIBILITY 
+
+            }else if (leftPress && paddleX > 0){
+                paddleX -= PADDLE_SENSIBILITY
+            }
         }
         
         function cleanCanvas(){
