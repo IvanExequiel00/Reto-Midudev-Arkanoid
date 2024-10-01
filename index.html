@@ -82,9 +82,18 @@
             if (y + dy < ballRadius ){
                 dy = -dy
             }
-            if (){
-                
+
+            const isBallSameXAsPaddle = 
+            x > paddleX &&
+            x < paddleX + paddleW
+
+            const isBallTouchingPaddle =  y + dy > paddleY 
+
+            if (isBallSameXAsPaddle && isBallTouchingPaddle){
+               dy = -dy 
             }
+
+
 
             else if(y + dy > canvas.height - ballRadius)
             {console.log("game over")
