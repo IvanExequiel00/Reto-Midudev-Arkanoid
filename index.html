@@ -44,14 +44,33 @@
        let leftPress = false
 
        //laddrillos variables 
-       const brickRowCount = 6;
+       const brickRowCount = 2;
        const brickColumCount = 13;
        const brickWidth = 30;
        const brickHeight = 14;
        const brickPadding = 2;
        const brickOffSetTop = 80;
-       const brickOffSetLeft = 30;
-       const bircks = [];
+       const brickOffSetLeft = 16;
+       const bricks = [];
+       const  BRICK_STATUS = {
+        ACTIVE: 1,
+        DESTROYED: 0,
+       }
+
+       for (let c = 0; c < brickColumCount; c++){
+        bricks[c] = []
+        for(let r = 0; r < brickRowCount; r++){
+            const brickX = c * (brickWidth + brickPadding) + brickOffSetLeft
+            const brickY = c * (brickHeight + brickPadding) + brickOffSetTop
+            const random = Math.floor(Math.random() * 8)
+
+            bricks[c][r] = {
+                x: brickX, 
+                y: brickY, 
+                status: BRICK_STATUS.ACTIVE , 
+                color:random }
+        }
+       }
 
        const PADDLE_SENSIBILITY = 8
     
@@ -74,7 +93,24 @@
         }
     
         function drawBricks() {
-            // Función vacía
+            for (let c = 0; c < brickColumCount; c++){
+            for(let r = 0; r < brickRowCount; r++){
+             const currentBricks = bricks[c][r]
+            if(currentBricks.status === BRICK_STATUS.DESTROYED)
+            continue;
+
+        ctx.fillStyle = "yellow"
+        ctx.rect(
+            currentBricks.x,
+            currentBricks.y,
+            brickWidth,
+            brickHeight
+        )
+        ctx.strokeStyle = "red"
+        ctx.stroke
+        ctx.fill()
+        }
+    }
         }
     
         function drawScore() {
