@@ -44,7 +44,7 @@
        let leftPress = false
 
        //laddrillos variables 
-       const brickRowCount = 2;
+       const brickRowCount = 6;
        const brickColumCount = 13;
        const brickWidth = 30;
        const brickHeight = 14;
@@ -61,7 +61,7 @@
         bricks[c] = []
         for(let r = 0; r < brickRowCount; r++){
             const brickX = c * (brickWidth + brickPadding) + brickOffSetLeft
-            const brickY = c * (brickHeight + brickPadding) + brickOffSetTop
+            const brickY = r * (brickHeight + brickPadding) + brickOffSetTop
             const random = Math.floor(Math.random() * 8)
 
             bricks[c][r] = {
@@ -114,11 +114,29 @@
         }
     
         function drawScore() {
-            // Función vacía
+            
         }
     
         function colisionDetection() {
-            // Función vacía
+            for (let c = 0; c < brickColumCount; c++){
+                for(let r = 0; r < brickRowCount; r++){
+                    const currentBricks = bricks[c][r]
+            if(currentBricks.status === BRICK_STATUS.DESTROYED)
+            continue;
+
+            const isBallSameXAsBrick = 
+            x > currentBricks.x &&
+            x < currentBricks.x + brickWidth
+
+            const isBallSameYAsBrick = 
+            y > currentBricks.y &&
+            y < currentBricks.y + brickHeight
+
+        if(isBallSameXAsBrick && isBallSameYAsBrick){
+            dy = -dy
+            currentBricks.status = BRICK_STATUS.DESTROYED
+        }}
+            }
         }
     
         function ballMovement() {
